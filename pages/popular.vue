@@ -1,9 +1,9 @@
 <template>
-    <h1>Login - Register</h1>
+  <h1>soy Popular</h1>
 </template>
 
 <script>
 export default {
-    name: 'IndexPage',
+  name: 'PopularPage',
 }
 </script>
