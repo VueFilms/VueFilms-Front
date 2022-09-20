@@ -28,15 +28,26 @@
     <v-col cols="12">
       <VideoTrailer></VideoTrailer>
     </v-col>
+    <v-col cols="12">
+      <CarteleraCard></CarteleraCard>
+    </v-col>
+    <v-col cols="12">
+      <ProximamenteCard></ProximamenteCard>
+    </v-col>
+    <v-col cols="12">
+      <MejorValoradas></MejorValoradas>
+    </v-col>
   </v-row>
 </template>
 
 <script>
 import TenddenciasDia from "../components/TenddenciasDia.vue";
-import VideoTrailer from "../components/VideoTrailer.vue";
+// import VideoTrailer from "../components/VideoTrailer.vue";
+import CarteleraCard from "../components/CarteleraCard.vue";
+import PopularCard from "../components/PopularCard.vue"
 export default {
   name: "HomePage",
-  components: { TenddenciasDia, VideoTrailer }
+  components: { TenddenciasDia, PopularCard, CarteleraCard }
 }
 </script>
 

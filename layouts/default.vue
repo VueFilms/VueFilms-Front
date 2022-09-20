@@ -25,8 +25,32 @@
       </v-container>
     </v-main>
 
-    <v-footer app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+    <v-footer>
+      <v-row justify="center" align="center" class="ma-5">
+        <v-col width="100%" cols="12" sm="5">
+          <v-row><img class=" ma-4 " width="55%" contain src="../assets/logo.svg">
+          </v-row>
+          <v-row width="55%">
+            <v-chip v-for=" (item, i) in items" :key="i" :to="item.to" router exact class="ma-2" color="green darken-4"
+              text-color="white">
+              <v-icon left>
+                {{ item.icon }}
+              </v-icon>
+              {{ item.title }}
+            </v-chip>
+          </v-row>
+
+        </v-col>
+        <v-col class="text-center">
+          <p>Lorem fistrum papaar papaar a gramenawer condemor jarl va usté muy cargadoo está la cosa muy malar. Me cago
+            en tus muelas qué dise usteer papaar papaar apetecan la caidita ahorarr a wan ese que llega te va a hasé
+            pupitaa. Por la gloria de mi madre te va a hasé pupitaa torpedo por la gloria de mi madre va usté muy
+            cargadoo apetecan. Diodeno diodeno diodeno ese pedazo de ese pedazo de. No te digo trigo por no llamarte
+            Rodrigor pupita qué dise usteer quietooor se calle ustée torpedo ese hombree de la pradera. No puedor
+            caballo blanco caballo negroorl está la cosa muy malar te va a hasé pupitaa qué dise usteer.</p>
+        </v-col>
+      </v-row>
+      <!-- <span>&copy; {{ new Date().getFullYear() }}</span> -->
     </v-footer>
   </v-app>
 </template>
