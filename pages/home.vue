@@ -43,7 +43,6 @@
 
 <script>
 import TenddenciasDia from "../components/TenddenciasDia.vue";
-// import VideoTrailer from "../components/VideoTrailer.vue";
 import CarteleraCard from "../components/CarteleraCard.vue";
 import PopularCard from "../components/PopularCard.vue"
 export default {
