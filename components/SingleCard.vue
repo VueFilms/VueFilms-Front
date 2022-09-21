@@ -43,6 +43,10 @@ export default {
     padding-top: 0;
 }
 
+img {
+    border-radius: 10px;
+}
+
 v-rating {
     margin: 0;
     padding: 0;

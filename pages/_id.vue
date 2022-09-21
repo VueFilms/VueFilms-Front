@@ -5,14 +5,14 @@
                 <v-card color="transparent" class="ma-4" height="500" width="300">
                     <v-row class=" fill-height" align="center" justify="center">
                         <img :src="urlposter" height="450" width="375" class="mb-0">
-                        <v-btn class="w-100" width="100%">
-                            {{provider.results.US.flatrate[0].provider_name}}
+                        <v-btn v-if="provider.results.ES != undefined" class="w-100" width="100%">
+                            {{provider.results.ES.flatrate[0].provider_name}}
                         </v-btn>
                     </v-row>
                 </v-card>
             </v-col>
-            <v-col width="100%" class="text-center">
-                <v-row class="d-flex align-baseline justify-center">
+            <v-col width="100%">
+                <v-row class=" d-flex align-baseline justify-center">
                     <h1>{{movie.title}} </h1>
                     <span class="ms-3">({{movie.release_date.substring(0,4)}})</span>
                 </v-row>
@@ -38,14 +38,14 @@
                         </v-btn>
                     </v-col>
                 </v-row>
-                <v-row class="d-flex align-baseline justify-center">
+                <v-row v-if="movie.overview != ''" class="d-flex mt-4">
                     <h2>Sinopsis</h2>
                     <p>{{movie.overview}}</p>
                 </v-row>
             </v-col>
 
         </v-row>
-        <!-- <pre>{{movie}}</pre> -->
+
     </div>
 
 </template>

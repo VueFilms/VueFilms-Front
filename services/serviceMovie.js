@@ -42,6 +42,12 @@ async function getProviders(id) {
     const data = await API.get(`/movie/${id}/watch/providers?api_key=${key1}&language=es-ES`)
     return data.data
 }
+async function getMovieSearch(title) {
+    const data = await API.get(`/search/movie?api_key=${key1}&language=es-ES&query=${title}`)
+    return data.data.results
+}
+
+
 export default {
     getTrendingToday,
     getPopularMovie,
@@ -51,4 +57,5 @@ export default {
     getMejorValoradasMovie,
     getFichaFilm,
     getProviders,
+    getMovieSearch,
 }
