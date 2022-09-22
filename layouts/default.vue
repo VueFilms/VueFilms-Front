@@ -89,13 +89,18 @@ export default {
           title: 'MejorValoradas',
           to: '/mejorValoradas',
         },
+        {
+          icon: 'mdi-clipboard-list-outline',
+          title: 'Mi Lista',
+          to: '/miLista',
+        },
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
       title: 'Vuetify.js',
     }
-  },
+  }
 }
 </script>
 

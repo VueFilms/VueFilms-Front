@@ -41,7 +41,7 @@ export default {
     name: 'IndexPage',
     data() {
         return {
-            email: "fer@fer.com",
+            email: "yeray@yeray.com",
             password: "123456789",
             pwdVisible: false,
         };
