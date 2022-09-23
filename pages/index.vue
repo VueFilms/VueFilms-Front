@@ -3,19 +3,37 @@
         <v-col v-if="loginCard" width="100%" cols="12" sm="6">
             <v-card>
                 <v-card-title class="mb-5">
-                    <h2>Accede a tu cuenta</h2>
+                    <h2>Acceder</h2>
                 </v-card-title>
+
                 <v-card-text class="pt-5">
-                    <v-text-field value="" type="email" label="Email" v-model="email" outlined
-                        prepend-icon="mdi-account-circle"></v-text-field>
-                    <v-text-field value="" :type="pwdVisible ? 'text' : 'password'" v-model="password" label="Password"
+                    <v-text-field value="" :rules="[rules.required, rules.email]" type="email" label="Email"
+                        v-model="email" outlined prepend-icon="mdi-account-circle"></v-text-field>
+                    <v-text-field value="" :rules="[rules.required, rules.counter]"
+                        :type="pwdVisible ? 'text' : 'password'" v-model="password" label="Password" outlined
+                        prepend-icon="mdi-lock" :append-icon="pwdVisible ? 'mdi-eye' : 'mdi-eye-off'"
+                        @click:append="pwdVisible = !pwdVisible"></v-text-field>
+                    <v-text-field value="" :rules="[rules.required, rules.confirm]"
+                        :type="pwdVisible ? 'text' : 'password'" v-model="passwordConfirm" label="Confirm Password"
                         outlined prepend-icon="mdi-lock" :append-icon="pwdVisible ? 'mdi-eye' : 'mdi-eye-off'"
                         @click:append="pwdVisible = !pwdVisible"></v-text-field>
                 </v-card-text>
+                <v-alert v-if="loginExist" prominent type="error">
+                    <v-row align="center" class="ms-5 d-flex flex-column">
+                        <v-col class="grow pa-0 ma-0">
+                            El correo o contraseña no son validos.
+                        </v-col>
+                        <v-col class="shrink pa-0 ma-0">
+                            <a class="white--text text-decoration-underline font-weight-black"
+                                @click="statusLogin">¿tienes una
+                                cuenta?</a>
+                        </v-col>
+                    </v-row>
+                </v-alert>
                 <v-card-actions width="100%" justify="center" align="center" class="pa-4">
                     <v-btn width="100%" color="green darken-4" @click="login">Enviar</v-btn>
                 </v-card-actions>
-                <v-card-text class="ps-5">¿Aun no tienes cuenta? <a @click="hola">Registrate</a>
+                <v-card-text class="ps-5">¿Aun no tienes cuenta? <a @click="statusLogin">Registrate</a>
                 </v-card-text>
             </v-card>
         </v-col>
@@ -25,16 +43,29 @@
                     <h2>Registrarse</h2>
                 </v-card-title>
                 <v-card-text class="pt-5">
-                    <v-text-field value="" type="email" label="Email" v-model="email" outlined
-                        prepend-icon="mdi-account-circle"></v-text-field>
-                    <v-text-field value="" :type="pwdVisible ? 'text' : 'password'" v-model="password" label="Password"
-                        outlined prepend-icon="mdi-lock" :append-icon="pwdVisible ? 'mdi-eye' : 'mdi-eye-off'"
+                    <v-text-field value="" :rules="[rules.required, rules.email]" type="email" label="Email"
+                        v-model="email" outlined prepend-icon="mdi-account-circle"></v-text-field>
+                    <v-text-field value="" :rules="[rules.required, rules.counter]"
+                        :type="pwdVisible ? 'text' : 'password'" v-model="password" label="Password" outlined
+                        prepend-icon="mdi-lock" :append-icon="pwdVisible ? 'mdi-eye' : 'mdi-eye-off'"
                         @click:append="pwdVisible = !pwdVisible"></v-text-field>
                 </v-card-text>
+                <v-alert v-if="accountExist" prominent type="error">
+                    <v-row align="center" class="ms-5 d-flex flex-column">
+                        <v-col class="grow pa-0 ma-0">
+                            El correo ya existe
+                        </v-col>
+                        <v-col class="shrink pa-0 ma-0">
+                            <a class="white--text text-decoration-underline font-weight-black" @click="statusLogin">¿ya
+                                tienes una
+                                cuenta?</a>
+                        </v-col>
+                    </v-row>
+                </v-alert>
                 <v-card-actions width="100%" justify="center" align="center" class="pa-4">
                     <v-btn width="100%" color="green darken-4" @click="signup">Enviar</v-btn>
                 </v-card-actions>
-                <v-card-text class="ps-5">¿ya tienes cuenta? <a @click="hola">Accede a tu cuenta</a>
+                <v-card-text class="ps-5">¿ya tienes cuenta? <a @click="statusLogin">Accede a tu cuenta</a>
                 </v-card-text>
             </v-card>
         </v-col>
@@ -49,22 +80,44 @@ export default {
         return {
             email: "yeray@yeray.com",
             password: "123456789",
+            passwordConfirm: '123456789',
             pwdVisible: false,
-            loginCard: false
-        };
+            loginCard: false,
+            loginExist: false,
+            accountExist: false,
+            rules: {
+                required: value => !!value || 'Requerido.',
+                counter: value => value.length <= 20 || 'Max 20 cracteres',
+                confirm: value => value === this.password || 'Contraseña no coincidente',
+                email: value => {
+                    const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                    return pattern.test(value) || 'Email invalido'
+                },
+            }
+        }
     },
     methods: {
-        hola() {
+        statusLogin() {
             this.loginCard = !this.loginCard
         },
         async signup() {
-            await API.signup(this.email, this.password)
+            const result = await API.signup(this.email, this.password)
+            console.log(result)
+            if (result) {
+                this.$router.push('/home')
+            } else if (!this.accountExist) {
+                this.accountExist = !this.accountExist
+            }
         },
         async login() {
             const logged = await API.login(this.email, this.password)
             if (logged) {
                 this.$router.push('/home')
+            } else if (!this.loginExist) {
+                this.loginExist = !this.loginExist
             }
+
+            console.log(logged)
         },
         async get() {
             const users = await API.getUsers()
