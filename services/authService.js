@@ -1,18 +1,16 @@
 import axios from "axios";
 
 const localAPI = axios.create({
-    baseURL: "http://localhost:8002/api/users",
+    baseURL: "https://api-vuefilms.herokuapp.com/api/users",
 });
 
 function saveToLocalStorage(data) {
-    console.log(data)
     localStorage.accessToken = data.token
     localStorage.email = data.data.email
     localStorage.id = data.data._id
 }
 
 function saveToLocalStorageLogin(data) {
-    console.log(data)
     localStorage.accessToken = data.data.token
     localStorage.email = data.data.user.email
     localStorage.id = data.data.user._id
@@ -21,13 +19,17 @@ function saveToLocalStorageLogin(data) {
 export default {
     async getUser() {
         const { data } = await localAPI.get(`/${localStorage.id}`);
-        console.log(data)
         return data
     },
     async signup(email, password) {
-        const { data } = await localAPI.post("/register", { email, password });
-        saveToLocalStorage(data)
-        return data.data;
+        try {
+            const { data } = await localAPI.post("/register", { email, password });
+            saveToLocalStorage(data)
+            return data.data;
+        } catch (error) {
+            console.error(error)
+            return false
+        }
     },
     async login(email, password) {
         try {
@@ -39,4 +41,24 @@ export default {
             return false
         }
     },
+    async addMovie(id) {
+        try {
+            const movieId = parseInt(id)
+            await localAPI.put(`${localStorage.id}/movie`, { movieId });
+            return true;
+        } catch (error) {
+            console.error(error)
+            return false
+        }
+    },
+    async deleteMovie(id) {
+        try {
+            const idMovie = parseInt(id)
+            await localAPI.delete(`${localStorage.id}/movie`, { data: { "movieId": idMovie } });
+            return true;
+        } catch (error) {
+            console.error(error)
+            return false
+        }
+    }
 };

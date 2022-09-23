@@ -21,7 +21,7 @@
                     <p class="ms-3"> Genero: {{movie.genres[0].name}}</p>
                     <p class="ms-3"> Duración: {{Math.floor(movie.runtime/60)}}h {{movie.runtime%60}}m</p>
                 </v-row>
-                <v-row class="d-flex align-baseline justify-center">
+                <v-row v-if="userMovies" class="d-flex align-baseline justify-center">
                     <v-col>
                         <v-progress-circular :rotate="360" :size="100" :width="15" :value="movie.vote_average*10"
                             color="green">
@@ -29,8 +29,12 @@
                         </v-progress-circular>
                         <h3>Puntuación de pelicula</h3>
                     </v-col>
-                    <v-btn elevation="2" color="green darken-4" rounded>
+                    <v-btn v-if="userMovies.user.lists.idMovies.includes(parseInt(idMovie)) != true" elevation="2"
+                        color="green darken-4" @click="addMovieList" rounded>
                         <v-icon left>mdi-heart-plus-outline </v-icon>Guardar
+                    </v-btn>
+                    <v-btn v-else elevation="2" color="red darken-4" @click="deleteMovie" rounded>
+                        <v-icon left>mdi-heart-plus-outline </v-icon>Eliminar
                     </v-btn>
                     <v-col>
                         <v-btn elevation="2" color="green darken-4" :href="trailer" rounded>
@@ -45,13 +49,14 @@
             </v-col>
 
         </v-row>
-
     </div>
 
 </template>
 
 <script>
 import API from '../services/serviceMovie.js'
+import APIuser from '../services/authService.js'
+
 export default {
     name: 'SingleMovie',
     data() {
@@ -61,6 +66,7 @@ export default {
             urlposter: null,
             provider: null,
             trailer: null,
+            userMovies: null,
         }
     },
     async mounted() {
@@ -70,7 +76,17 @@ export default {
         this.urlposter = `https://image.tmdb.org/t/p/w500${this.movie.poster_path}`
         const url = await API.getMovieTrailer(this.movie.id)
         this.trailer = `https://www.youtube.com/watch?v=${url}`
-        // insertar una fucnion condicional que mire si provider existe o hay que poner un no provider
+        this.userMovies = await APIuser.getUser()
+    },
+    methods: {
+        async addMovieList() {
+            await APIuser.addMovie(this.idMovie)
+            this.userMovies = await APIuser.getUser()
+        },
+        async deleteMovie() {
+            await APIuser.deleteMovie(this.idMovie)
+            this.userMovies = await APIuser.getUser()
+        }
     }
 
 }
