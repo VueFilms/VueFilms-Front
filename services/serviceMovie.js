@@ -10,8 +10,8 @@ async function getTrendingToday() {
     const data = await API.get(`trending/movie/day?api_key=${key1}&language=es-ES`)
     return data.data.results
 }
-async function getPopularMovie() {
-    const data = await API.get(`/movie/popular?api_key=${key1}&language=es-ES`)
+async function getPopularMovie(page) {
+    const data = await API.get(`/movie/popular?api_key=${key1}&language=es-ES&page=${page}`)
     return data.data.results
 }
 async function getMovieTrailer(id) {
