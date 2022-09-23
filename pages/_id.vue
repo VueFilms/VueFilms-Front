@@ -12,32 +12,32 @@
                 </v-card>
             </v-col>
             <v-col width="100%">
-                <v-row class=" d-flex align-baseline justify-center">
+                <v-row class=" d-flex align-baseline">
                     <h1>{{movie.title}} </h1>
-                    <span class="ms-3">({{movie.release_date.substring(0,4)}})</span>
+                    <span class="ms-2">({{movie.release_date.substring(0,4)}})</span>
                 </v-row>
-                <v-row class="d-flex align-baseline justify-center">
+                <v-row class="d-flex align-baseline">
                     <p> {{movie.release_date}}</p>
                     <p class="ms-3"> Genero: {{movie.genres[0].name}}</p>
                     <p class="ms-3"> Duración: {{Math.floor(movie.runtime/60)}}h {{movie.runtime%60}}m</p>
                 </v-row>
-                <v-row v-if="userMovies" class="d-flex align-baseline justify-center">
-                    <v-col>
+                <v-row v-if="userMovies" class="d-flex align-baseline mb-5">
+                    <v-col class="d-flex flex-column" cols="3">
                         <v-progress-circular :rotate="360" :size="100" :width="15" :value="movie.vote_average*10"
                             color="green">
                             {{ movie.vote_average }}
                         </v-progress-circular>
-                        <h3>Puntuación de pelicula</h3>
+                        <h3>Puntuación</h3>
                     </v-col>
-                    <v-btn v-if="userMovies.user.lists.idMovies.includes(parseInt(idMovie)) != true" elevation="2"
-                        color="green darken-4" @click="addMovieList" rounded>
-                        <v-icon left>mdi-heart-plus-outline </v-icon>Guardar
-                    </v-btn>
-                    <v-btn v-else elevation="2" color="red darken-4" @click="deleteMovie" rounded>
-                        <v-icon left>mdi-heart-plus-outline </v-icon>Eliminar
-                    </v-btn>
                     <v-col>
-                        <v-btn elevation="2" color="green darken-4" :href="trailer" rounded>
+                        <v-btn class="ma-2" v-if="userMovies.user.lists.idMovies.includes(parseInt(idMovie)) != true"
+                            elevation="2" color="green darken-4" @click="addMovieList" rounded>
+                            <v-icon left>mdi-heart-plus-outline </v-icon>Guardar
+                        </v-btn>
+                        <v-btn class="ma-2" v-else elevation="2" color="red darken-4" @click="deleteMovie" rounded>
+                            <v-icon left>mdi-heart-plus-outline </v-icon>Eliminar
+                        </v-btn>
+                        <v-btn class="ma-2" elevation="2" color="green darken-4" :href="trailer" rounded>
                             <v-icon left>mdi-play-circle-outline </v-icon>Ver trailer
                         </v-btn>
                     </v-col>
@@ -99,5 +99,9 @@ v-btn {
 
 img {
     border-radius: 10px 10px 0 0;
+}
+
+p {
+    font-weight: 200;
 }
 </style>

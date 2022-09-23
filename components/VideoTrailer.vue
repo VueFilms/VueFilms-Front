@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Pelicula del dia 🎯</h2>
+        <h2>Pelicula del día 🎯</h2>
         <v-col v-if="trailer && movie">
             <videoPlayer :src="trailer"></videoPlayer>
             <v-row class="mt-3 d-flex align-baseline">

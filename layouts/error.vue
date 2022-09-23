@@ -1,12 +1,12 @@
 <template>
-  <v-app dark>
+  <v-app dark justify="center" align="center" class="ma-5">
     <h1 v-if="error.statusCode === 404">
       {{ pageNotFound }}
     </h1>
     <h1 v-else>
       {{ otherError }}
     </h1>
-    <NuxtLink to="/home"> Home page </NuxtLink>
+    <v-btn class="mt-5" color="green darken-4" to="/"> Create una cuenta 😁 </v-btn>
   </v-app>
 </template>
 
@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       pageNotFound: '404 Not Found',
-      otherError: 'An error occurred',
+      otherError: 'Uppssss 😱. Parece que no tienes una cuenta aun.',
     }
   },
   head() {
