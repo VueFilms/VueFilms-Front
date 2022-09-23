@@ -1,7 +1,7 @@
 <template>
   <v-row justify="center" align="center">
 
-    <v-col class="hometop text-center d-flex justify-center align-center">
+    <v-col cols="12" class="hometop text-center d-flex justify-center align-center">
 
       <v-col cols="12" sm="8">
         <v-card-title class="justify-center">
@@ -20,22 +20,22 @@
 
     </v-col>
 
-    <v-col cols="11">
+    <v-col cols="12" sm="10">
       <TenddenciasDia></TenddenciasDia>
     </v-col>
-    <v-col cols="11">
+    <v-col cols="12" sm="10">
       <PopularCard></PopularCard>
     </v-col>
-    <v-col cols="11">
+    <v-col cols="12" sm="10">
       <VideoTrailer></VideoTrailer>
     </v-col>
-    <v-col cols="11">
+    <v-col cols="12" sm="10">
       <CarteleraCard></CarteleraCard>
     </v-col>
-    <v-col cols="11">
+    <v-col cols="12" sm="10">
       <ProximamenteCard></ProximamenteCard>
     </v-col>
-    <v-col cols="11">
+    <v-col cols="12" sm="10">
       <MejorValoradas></MejorValoradas>
     </v-col>
   </v-row>
