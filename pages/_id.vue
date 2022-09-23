@@ -5,7 +5,7 @@
                 <v-card color="transparent" class="ma-4" height="500" width="300">
                     <v-row class=" fill-height" align="center" justify="center">
                         <img :src="urlposter" height="450" width="375" class="mb-0">
-                        <v-btn v-if="provider.results.ES != undefined && provider.results.ES.buy === undefined"
+                        <v-btn v-if="provider.results.ES != undefined && provider.results.ES.link === undefined"
                             class="w-100" width="100%">
                             {{provider.results.ES.flatrate[0].provider_name}}
                         </v-btn>
@@ -81,6 +81,7 @@ export default {
         const url = await API.getMovieTrailer(this.movie.id)
         this.trailer = `https://www.youtube.com/watch?v=${url}`
         this.userMovies = await APIuser.getUser()
+        console.log(this.provider)
     },
     methods: {
         async addMovieList() {

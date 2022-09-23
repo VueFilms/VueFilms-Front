@@ -20,16 +20,16 @@ async function getMovieTrailer(id) {
         return ''
     } else { return trailer.data.results[0].key }
 }
-async function getCarteleraMovie() {
-    const data = await API.get(`/movie/now_playing?api_key=${key1}&language=es-ES`)
+async function getCarteleraMovie(page) {
+    const data = await API.get(`/movie/now_playing?api_key=${key1}&language=es-ES&page=${page}`)
     return data.data.results
 }
-async function getProximamenteMovie() {
-    const data = await API.get(`movie/upcoming?api_key=${key1}&language=es-ES`)
+async function getProximamenteMovie(page) {
+    const data = await API.get(`movie/upcoming?api_key=${key1}&language=es-ES&page=${page}`)
     return data.data.results
 }
-async function getMejorValoradasMovie() {
-    const data = await API.get(`movie/top_rated?api_key=${key1}&language=es-ES`)
+async function getMejorValoradasMovie(page) {
+    const data = await API.get(`movie/top_rated?api_key=${key1}&language=es-ES&page=${page}`)
     return data.data.results
 }
 
