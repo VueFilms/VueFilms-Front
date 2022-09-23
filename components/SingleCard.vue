@@ -1,7 +1,7 @@
 <template>
-    <v-card color="transparent" class="ma-4" height="275" width="150" @click="$router.push(`/${movie.id}`)">
+    <v-card color="transparent" class="ma-4" height="250" width="150" @click="$router.push(`/${movie.id}`)">
         <v-row class="fill-height" align="center" justify="center">
-            <img :src="urlposter" height="225" width="150">
+            <img :src="urlposter" height="215" width="160">
 
             <v-row width="100%" class="mt-1 ms-3 d-flex">
                 <v-col cols="12" class="ma-0 pa-0">
@@ -49,7 +49,7 @@ export default {
     max-width: 150px;
     font-size: 16px;
     text-overflow: ellipsis;
-    overflow-y: hidden;
+    overflow: hidden;
     white-space: nowrap;
     font-weight: 600;
     margin: 0;

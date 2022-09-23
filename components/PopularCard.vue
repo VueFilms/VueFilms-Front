@@ -24,7 +24,6 @@ export default {
     },
     computed: {
         show() {
-            console.log(this.$vuetify.breakpoint.name)
             if (this.$vuetify.breakpoint.name === 'xs') {
                 return false
             } else {

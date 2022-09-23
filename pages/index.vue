@@ -102,7 +102,6 @@ export default {
         },
         async signup() {
             const result = await API.signup(this.email, this.password)
-            console.log(result)
             if (result) {
                 this.$router.push('/home')
             } else if (!this.accountExist) {
@@ -116,8 +115,6 @@ export default {
             } else if (!this.loginExist) {
                 this.loginExist = !this.loginExist
             }
-
-            console.log(logged)
         },
         async get() {
             const users = await API.getUsers()

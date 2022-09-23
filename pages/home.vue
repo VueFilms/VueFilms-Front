@@ -5,7 +5,7 @@
 
       <v-col cols="12" sm="8">
         <v-card-title class="justify-center">
-          <h1> Bienvenidos.</h1>
+          <h1> Bienvenido.</h1>
         </v-card-title>
 
         <v-text-field class="mt-5" label="Buscar Pelicula" v-model="value" filled dense outlined rounded
@@ -13,7 +13,7 @@
         </v-text-field>
 
         <v-card-text>
-          <p> Millones de peliculas a tu disposición</p>
+          <p> Miles de películas a tu disposición</p>
           <h3>Encuentra. Comparte.</h3>
         </v-card-text>
       </v-col>

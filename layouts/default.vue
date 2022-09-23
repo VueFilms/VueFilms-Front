@@ -33,7 +33,7 @@
 
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <img src="../assets/logo.svg">
+      <img id="logo" @click="$router.push('/home')" src="../assets/logo.svg">
     </v-app-bar>
 
     <v-main>
@@ -130,5 +130,9 @@ export default {
 <style scoped>
 v-app {
   font-family: 'Quicksand', sans-serif;
+}
+
+#logo {
+  cursor: pointer;
 }
 </style>

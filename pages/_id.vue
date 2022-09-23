@@ -27,9 +27,9 @@
                 </v-row>
                 <v-row v-if="userMovies" class="d-flex align-center mb-5">
                     <v-col class="d-flex flex-column" cols="4" sm="3">
-                        <v-progress-circular :rotate="360" :size="80" :width="15" :value="movie.vote_average*10"
-                            color="green">
-                            {{ movie.vote_average }}
+                        <v-progress-circular :rotate="360" :size="80" :width="15"
+                            :value="(movie.vote_average*10).toFixed(1)" color="green">
+                            {{ movie.vote_average.toFixed(1) }}
                         </v-progress-circular>
                         <h4>Puntuación</h4>
                     </v-col>
