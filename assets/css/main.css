@@ -1,3 +1,8 @@
 * {
     font-family: 'Quicksand', sans-serif;
 }
+
+.v-rating>.v-icon {
+    margin: 0 !important;
+    padding: 0 !important;
+}

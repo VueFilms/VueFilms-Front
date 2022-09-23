@@ -3,11 +3,21 @@
         <v-row class="fill-height" align="center" justify="center">
             <img :src="urlposter" height="225" width="150">
 
-            <v-row class="mt-3 ms-2 d-flex">
-                <p class="col titlemovie">{{movie.title}} - {{movie.vote_average}}</p>
-                <v-rating class="col pa-0" :value="movie.vote_average/2" background-color="green lighten-3"
-                    color="green" small>
-                </v-rating>
+            <v-row width="100%" class="mt-1 ms-3 d-flex">
+                <v-col cols="12" class="ma-0 pa-0">
+                    <p class="col pa-0 titlemovie">{{movie.title}} </p>
+                </v-col>
+                <v-col class="d-flex ma-0 pa-0">
+                    <v-col cols="6" class="ma-0 pa-0">
+                        <v-rating id="rating-card" class="col pa-0" :value="movie.vote_average/2"
+                            background-color="green lighten-3" color="green" small>
+                        </v-rating>
+                    </v-col>
+                    <v-col class="ma-0 pa-0">
+                        <span>{{movie.vote_average}}</span>
+                    </v-col>
+                </v-col>
+
             </v-row>
         </v-row>
 
@@ -36,19 +46,20 @@ export default {
 
 <style scoped>
 .titlemovie {
-    font-size: 12px;
-    font-weight: 400;
+    max-width: 150px;
+    font-size: 16px;
+    text-overflow: ellipsis;
+    overflow-y: hidden;
+    white-space: nowrap;
+    font-weight: 600;
     margin: 0;
     padding-bottom: 0;
     padding-top: 0;
 }
 
+
+
 img {
     border-radius: 10px;
-}
-
-v-rating {
-    margin: 0;
-    padding: 0;
 }
 </style>

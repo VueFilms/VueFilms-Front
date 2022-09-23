@@ -1,7 +1,7 @@
 <template>
     <v-col v-if="movies" cols="12" :v-if="user" class="d-flex flex-column flex-wrap justify-center">
         <v-row cols="12">
-            <h1 class="pa-5">Peliculas pendientes de ver</h1>
+            <h2 class="pa-5">Peliculas pendientes de ver 🍿</h2>
         </v-row>
         <v-row cols="12">
             <singleCard v-for="(movie, idx) in movies" :key="idx" :movie="movie"></singleCard>
