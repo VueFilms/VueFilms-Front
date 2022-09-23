@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer v-model="drawer" :clipped="clipped" fixed app>
+    <v-navigation-drawer v-model="showAside" :clipped="clipped" fixed app>
       <v-list>
         <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
           <v-list-item-action>
@@ -131,6 +131,13 @@ export default {
   computed: {
     show() {
       if (this.$vuetify.breakpoint.name === 'xs') {
+        return true
+      } else {
+        return false
+      }
+    },
+    showAside() {
+      if (this.$vuetify.breakpoint.name === 'xs' && this.drawer) {
         return true
       } else {
         return false
