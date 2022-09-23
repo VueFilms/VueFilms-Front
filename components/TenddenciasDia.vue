@@ -38,4 +38,15 @@ export default {
 .nuxt-logo {
     height: 180px;
 }
+
+v-sheet::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right top, #05193799, #004d7a99, #00879399, #00bf7299, #a8eb1299);
+    z-index: -1;
+}
 </style>
