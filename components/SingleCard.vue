@@ -14,7 +14,7 @@
                         </v-rating>
                     </v-col>
                     <v-col class="ma-0 pa-0">
-                        <span>{{movie.vote_average}}</span>
+                        <span>{{movie.vote_average.toFixed(1)}}</span>
                     </v-col>
                 </v-col>
 

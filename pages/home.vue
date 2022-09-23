@@ -8,8 +8,8 @@
           <h1> Bienvenidos.</h1>
         </v-card-title>
 
-        <v-text-field label="Buscar Pelicula" v-model="value" filled rounded dense append-icon="mdi-movie-search"
-          @keyup.enter.exact="search" @click:append="search">
+        <v-text-field class="mt-5" label="Buscar Pelicula" v-model="value" filled dense outlined rounded
+          append-icon="mdi-movie-search" @keyup.enter.exact="search" @click:append="search">
         </v-text-field>
 
         <v-card-text>
