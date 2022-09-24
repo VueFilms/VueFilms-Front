@@ -25,8 +25,8 @@
                     <p class="ms-3"> Genero: {{movie.genres[0].name}}</p>
                     <p class="ms-3"> Duración: {{Math.floor(movie.runtime/60)}}h {{movie.runtime%60}}m</p>
                 </v-row>
-                <v-row v-if="userMovies" class="d-flex mb-5">
-                    <v-col class="d-flex flex-column align-center" cols="4" sm="3">
+                <v-row v-if="userMovies" class="d-flex  mb-5">
+                    <v-col class="d-flex flex-column " cols="4" sm="3">
                         <v-progress-circular :rotate="360" :size="80" :width="15"
                             :value="(movie.vote_average*10).toFixed(1)" color="green">
                             {{ movie.vote_average.toFixed(1) }}
@@ -54,6 +54,7 @@
             </v-col>
 
         </v-row>
+        <pre>{{movie}}</pre>
     </div>
 
 </template>
