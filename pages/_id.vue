@@ -41,7 +41,8 @@
                         <v-btn class="ma-2" v-else elevation="2" color="red darken-4" @click="deleteMovie" rounded>
                             <v-icon left>mdi-heart-plus-outline </v-icon>Eliminar
                         </v-btn>
-                        <v-btn class="ma-2" elevation="2" color="green darken-4" :href="trailer" rounded>
+                        <v-btn v-if="trailer != urlBase" class="ma-2" elevation="2" color="green darken-4"
+                            :href="trailer" rounded>
                             <v-icon left>mdi-play-circle-outline </v-icon>Ver trailer
                         </v-btn>
                     </v-col>
@@ -71,6 +72,7 @@ export default {
             provider: null,
             trailer: null,
             userMovies: null,
+            urlBase: 'https://www.youtube.com/watch?v='
         }
     },
     async mounted() {
