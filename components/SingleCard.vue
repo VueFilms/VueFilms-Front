@@ -1,5 +1,6 @@
 <template>
-    <v-card color="transparent" class="ma-4" height="250" width="150" @click="$router.push(`/${movie.id}`)">
+    <v-card color="transparent" elevation="0" class="ma-4" height="250" width="150"
+        @click="$router.push(`/${movie.id}`)">
         <v-row class="fill-height" align="center" justify="center">
             <img :src="urlposter" height="215" width="160">
 
