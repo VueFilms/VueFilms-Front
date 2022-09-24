@@ -13,10 +13,7 @@
                         :type="pwdVisible ? 'text' : 'password'" v-model="password" label="Password" outlined
                         prepend-icon="mdi-lock" :append-icon="pwdVisible ? 'mdi-eye' : 'mdi-eye-off'"
                         @click:append="pwdVisible = !pwdVisible"></v-text-field>
-                    <v-text-field value="" :rules="[rules.required, rules.confirm]"
-                        :type="pwdVisible ? 'text' : 'password'" v-model="passwordConfirm" label="Confirm Password"
-                        outlined prepend-icon="mdi-lock" :append-icon="pwdVisible ? 'mdi-eye' : 'mdi-eye-off'"
-                        @click:append="pwdVisible = !pwdVisible"></v-text-field>
+
                 </v-card-text>
                 <v-alert v-if="loginExist" prominent type="error">
                     <v-row align="center" class="ms-5 d-flex flex-column">
@@ -49,6 +46,10 @@
                         :type="pwdVisible ? 'text' : 'password'" v-model="password" label="Password" outlined
                         prepend-icon="mdi-lock" :append-icon="pwdVisible ? 'mdi-eye' : 'mdi-eye-off'"
                         @click:append="pwdVisible = !pwdVisible"></v-text-field>
+                    <v-text-field value="" :rules="[rules.required, rules.confirm]"
+                        :type="pwdVisible ? 'text' : 'password'" v-model="passwordConfirm" label="Confirm Password"
+                        outlined prepend-icon="mdi-lock" :append-icon="pwdVisible ? 'mdi-eye' : 'mdi-eye-off'"
+                        @click:append="pwdVisible = !pwdVisible"></v-text-field>
                 </v-card-text>
                 <v-alert v-if="accountExist" prominent type="error">
                     <v-row align="center" class="ms-5 d-flex flex-column">
@@ -59,6 +60,13 @@
                             <a class="white--text text-decoration-underline font-weight-black" @click="statusLogin">¿ya
                                 tienes una
                                 cuenta?</a>
+                        </v-col>
+                    </v-row>
+                </v-alert>
+                <v-alert v-if="alertPass" prominent type="error">
+                    <v-row align="center" class="ms-5 d-flex flex-column">
+                        <v-col class="grow pa-0 ma-0">
+                            La contraseña no coincide
                         </v-col>
                     </v-row>
                 </v-alert>
@@ -85,6 +93,7 @@ export default {
             loginCard: false,
             loginExist: false,
             accountExist: false,
+            alertPass: false,
             rules: {
                 required: value => !!value || 'Requerido.',
                 counter: value => value.length <= 20 || 'Max 20 cracteres',
@@ -101,12 +110,17 @@ export default {
             this.loginCard = !this.loginCard
         },
         async signup() {
-            const result = await API.signup(this.email, this.password)
-            if (result) {
-                this.$router.push('/home')
-            } else if (!this.accountExist) {
-                this.accountExist = !this.accountExist
+            if (this.password === this.passwordConfirm) {
+                const result = await API.signup(this.email, this.password)
+                if (result) {
+                    this.$router.push('/home')
+                } else if (!this.accountExist) {
+                    this.accountExist = !this.accountExist
+                }
+            } else if (!this.alertPass) {
+                this.alertPass = !this.alertPass
             }
+
         },
         async login() {
             const logged = await API.login(this.email, this.password)

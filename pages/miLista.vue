@@ -8,9 +8,7 @@
 
                 <singleCard v-for="(movie, idx) in movies" :key="idx" :movie="movie"></singleCard>
             </v-row>
-            <v-row width="100%" class="d-flex justify-center ma-5 pa-5">
-                <v-btn color="green darken-4" @click="pageLoad">Cargas mas películas</v-btn>
-            </v-row>
+
         </v-col>
     </v-col>
 
