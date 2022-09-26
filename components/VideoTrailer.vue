@@ -32,7 +32,7 @@ export default {
         }
     },
     async mounted() {
-        this.movie = await API.getPopularMovie()
+        this.movie = await API.getTrendingToday()
         while (this.urlMovie === '') {
             const url = await API.getMovieTrailer(this.movie[this.i].id)
             this.urlMovie = url
