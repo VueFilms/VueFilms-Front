@@ -34,7 +34,7 @@
                         <h4>Puntuación</h4>
                     </v-col>
                     <v-col>
-                        <v-btn class="ma-2" v-if="userMovies.user.lists.idMovies.includes(parseInt(idMovie)) != true"
+                        <v-btn class="ma-2" v-if="!userMovies.user.lists.idMovies.includes(parseInt(idMovie))"
                             elevation="2" color="green darken-4" @click="addMovieList" rounded>
                             <v-icon left>mdi-heart-plus-outline </v-icon>Guardar
                         </v-btn>
@@ -48,8 +48,10 @@
                     </v-col>
                 </v-row>
                 <v-row v-if="movie.overview != ''" class="d-flex mt-4">
-                    <h2>Sinopsis</h2>
-                    <p>{{movie.overview}}</p>
+                    <v-col class="text-justify" cols="12" sm="8">
+                        <h2>Sinopsis</h2>
+                        <p>{{movie.overview}}</p>
+                    </v-col>
                 </v-row>
             </v-col>
 

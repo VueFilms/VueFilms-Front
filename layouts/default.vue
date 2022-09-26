@@ -36,10 +36,12 @@
       <v-container class="d-flex align-center">
         <img id="logo" @click="$router.push('/home')" src="../assets/logo.svg">
         <v-spacer></v-spacer>
-        <v-col v-if="!show" cols="8" class="d-flex ">
+        <v-col v-if="!show" cols="8" class="d-flex justify-end">
           <v-btn v-for="(item, i) in items" :key="i" :to="item.to" color="transparent" elevation="0" router exact>
             {{item.title}}
           </v-btn>
+          <v-btn v-if="local.id" @click="logout" elevation="0">Cerrar sesion</v-btn>
+          <v-btn v-else to="/" elevation="0">Cuenta</v-btn>
         </v-col>
       </v-container>
     </v-app-bar>
@@ -150,6 +152,7 @@ export default {
     },
     logout() {
       localStorage.clear()
+      this.$router.push(`/`)
     }
   }
 }

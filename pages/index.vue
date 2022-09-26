@@ -66,7 +66,7 @@
                 <v-alert v-if="alertPass" prominent type="error">
                     <v-row align="center" class="ms-5 d-flex flex-column">
                         <v-col class="grow pa-0 ma-0">
-                            La contraseña no coincide
+                            Datos incorrectos
                         </v-col>
                     </v-row>
                 </v-alert>
@@ -96,7 +96,7 @@ export default {
             alertPass: false,
             rules: {
                 required: value => !!value || 'Requerido.',
-                counter: value => value.length <= 20 || 'Max 20 cracteres',
+                counter: value => value.length <= 20 || 'Max 20 carácteres',
                 confirm: value => value === this.password || 'Contraseña no coincidente',
                 email: value => {
                     const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -110,7 +110,7 @@ export default {
             this.loginCard = !this.loginCard
         },
         async signup() {
-            if (this.password === this.passwordConfirm) {
+            if (this.password === this.passwordConfirm && this.email !== '' && this.password !== '') {
                 const result = await API.signup(this.email, this.password)
                 if (result) {
                     this.$router.push('/home')
