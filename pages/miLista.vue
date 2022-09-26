@@ -1,6 +1,6 @@
 <template>
     <v-col cols="12" class="d-flex flex-wrap justify-center aling-center">
-        <v-col cols="12" sm="10" :v-if="movie" class="d-flex flex-wrap justify-center aling-center">
+        <v-col cols="12" sm="10" :v-if="movie" class="d-flex flex-column flex-wrap justify-center aling-center">
             <v-row class="d-flex justify-center mb-5">
                 <h2>Peliculas pendientes de ver🍿</h2>
             </v-row>
