@@ -1,9 +1,9 @@
 <template>
-    <div v-if="provider">
-        <v-row width="100%" justify="center" align="center" class="ma-5 ">
+    <div v-if="provider" :style="bgimg">
+        <v-row id="wrapper" width="100%" justify="center" align="center" class="ma-5 ">
             <v-col width="100%" cols="12" sm="5" class="text-center d-flex justify-center">
-                <v-card color="transparent" class="ma-4" height="500" width="300">
-                    <v-row class=" fill-height" align="center" justify="center">
+                <v-card color="transparent" elevation="0" class="ma-4" height="500" width="300">
+                    <v-row color="transparent" class=" fill-height" align="center" justify="center">
                         <img :src="urlposter" height="450" width="375" class="mb-0">
                         <v-btn v-if="provider.results.ES != undefined && provider.results.ES.flatrate" class="w-100"
                             width="100%">
@@ -54,7 +54,7 @@
             </v-col>
 
         </v-row>
-        <pre>{{movie}}</pre>
+
     </div>
 
 </template>
@@ -67,6 +67,7 @@ export default {
     name: 'SingleMovie',
     data() {
         return {
+            imgBack: null,
             idMovie: this.$route.params.id,
             movie: null,
             urlposter: null,
@@ -84,7 +85,15 @@ export default {
         const url = await API.getMovieTrailer(this.movie.id)
         this.trailer = `https://www.youtube.com/watch?v=${url}`
         this.userMovies = await APIuser.getUser()
-        console.log(this.provider)
+        this.imgBack = `url('https://image.tmdb.org/t/p/w500${this.movie.backdrop_path}')`
+    },
+    computed: {
+        bgimg() {
+            return {
+                "background": `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('${this.urlposter}') no-repeat center center !important`,
+                "background-size": "cover !important"
+            }
+        }
     },
     methods: {
         async addMovieList() {
@@ -100,7 +109,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped vars="{ imgBack:  }">
 v-btn {
     margin-top: -2px;
 }
@@ -110,6 +119,6 @@ img {
 }
 
 p {
-    font-weight: 200;
+    font-weight: 400;
 }
 </style>

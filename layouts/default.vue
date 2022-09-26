@@ -44,8 +44,8 @@
       </v-container>
     </v-app-bar>
 
-    <v-main>
-      <v-container fluid>
+    <v-main class="ma-0">
+      <v-container class="pa-0" fluid>
         <Nuxt />
       </v-container>
     </v-main>
