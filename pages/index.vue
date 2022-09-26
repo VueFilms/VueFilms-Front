@@ -130,10 +130,6 @@ export default {
             } else if (!this.loginExist) {
                 this.loginExist = !this.loginExist
             }
-        },
-        async get() {
-            const users = await API.getUsers()
-            console.log(users)
         }
     }
 }
