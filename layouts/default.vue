@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer v-model="drawer" :clipped="clipped" fixed app>
+    <v-navigation-drawer v-if="!show" v-model="drawer" fixed app>
       <v-list>
         <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
           <v-list-item-action>
@@ -30,7 +30,7 @@
     </v-navigation-drawer>
 
 
-    <v-app-bar :clipped-left="clipped" fixed app>
+    <v-app-bar fixed app>
       <v-app-bar-nav-icon v-if="show" @click.stop="draw" />
       <v-container class="d-flex align-center">
         <img id="logo" @click="$router.push('/home')" src="../assets/logo.svg">
