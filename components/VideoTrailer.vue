@@ -1,9 +1,9 @@
 <template>
     <div>
-        <h2>Pelicula del día 🎯</h2>
+        <h2 class="ms-4">Película del día 🎯</h2>
         <v-col v-if="trailer && movie">
             <videoPlayer :src="trailer"></videoPlayer>
-            <v-row class="mt-3 d-flex align-baseline">
+            <v-row class="mt-3 ms-4 d-flex align-baseline">
                 <h3>{{movie[0].title}}</h3>
                 <p class="ms-2">{{movie[0].vote_average}}</p>
                 <v-rating :value="movie[0].vote_average/2" background-color="green lighten-3" color="green" small>

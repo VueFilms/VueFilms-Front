@@ -1,7 +1,7 @@
 <template>
 
     <v-sheet color="transparent" class="mx-auto" max-width="auto">
-        <h2>Tendencias del día 🚀</h2>
+        <h2 class="ms-4">Tendencias del día 🚀</h2>
         <v-slide-group v-model="model" class="pa-2" active-class="success" :show-arrows="show">
             <v-slide-item v-for="(movie, idx) in movies" :key="idx">
                 <singleCard :movie="movie"></singleCard>

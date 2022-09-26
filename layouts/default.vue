@@ -70,13 +70,8 @@
           </v-col>
           <v-col class="">
             <img class=" ma-4 " width="55%" contain src="../assets/logo.svg"></img>
-            <p>Lorem fistrum papaar papaar a gramenawer condemor jarl va usté muy cargadoo está la cosa muy malar. Me
-              cago
-              en tus muelas qué dise usteer papaar papaar apetecan la caidita ahorarr a wan ese que llega te va a hasé
-              pupitaa. Por la gloria de mi madre te va a hasé pupitaa torpedo por la gloria de mi madre va usté muy
-              cargadoo apetecan. Diodeno diodeno diodeno ese pedazo de ese pedazo de. No te digo trigo por no llamarte
-              Rodrigor pupita qué dise usteer quietooor se calle ustée torpedo ese hombree de la pradera. No puedor
-              caballo blanco caballo negroorl está la cosa muy malar te va a hasé pupitaa qué dise usteer.</p>
+            <p>VueFilms es tu aplicacion de confianza para encontrar peliculas que ver y saber en que plataformas esta
+              disponible. </p>
           </v-col>
         </v-row>
       </v-container>
