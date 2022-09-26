@@ -1,6 +1,6 @@
 <template>
-    <div v-if="provider" :style="bgimg">
-        <v-row id="wrapper" width="100%" justify="center" align="center" class="ma-5 ">
+    <div v-if="provider" class="wrapperall" :style="bgimg">
+        <v-row id="wrapper" width="100%" justify="center" align="center" class="ma-0 pa-5">
             <v-col width="100%" cols="12" sm="5" class="text-center d-flex justify-center">
                 <v-card color="transparent" elevation="0" class="ma-4" height="500" width="300">
                     <v-row color="transparent" class=" fill-height" align="center" justify="center">
@@ -87,12 +87,12 @@ export default {
         const url = await API.getMovieTrailer(this.movie.id)
         this.trailer = `https://www.youtube.com/watch?v=${url}`
         this.userMovies = await APIuser.getUser()
-        this.imgBack = `url('https://image.tmdb.org/t/p/w500${this.movie.backdrop_path}')`
+        this.imgBack = `https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${this.movie.backdrop_path}`
     },
     computed: {
         bgimg() {
             return {
-                "background": `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('${this.urlposter}') no-repeat center center !important`,
+                "background": `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('${this.imgBack}') no-repeat center center fixed !important`,
                 "background-size": "cover !important"
             }
         }
@@ -111,7 +111,7 @@ export default {
 }
 </script>
 
-<style scoped vars="{ imgBack:  }">
+<style scoped>
 v-btn {
     margin-top: -2px;
 }

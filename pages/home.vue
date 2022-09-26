@@ -67,7 +67,7 @@ export default {
   async mounted() {
     this.movies = await API.getProximamenteMovie()
     const num = Math.floor(Math.random() * 20)
-    this.url = `https://image.tmdb.org/t/p/w500${this.movies[num].backdrop_path}`
+    this.url = `https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${this.movies[num].backdrop_path}`
   },
   methods: {
     search() {
