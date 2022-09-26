@@ -27,13 +27,18 @@ export default {
         return {
             movie: false,
             trailer: false,
+            urlMovie: '',
+            i: 0
         }
     },
     async mounted() {
         this.movie = await API.getPopularMovie()
-        const url = await API.getMovieTrailer(this.movie[1].id)
-        this.trailer = `https://www.youtube.com/watch?v=${url}`
+        while (this.urlMovie === '') {
+            const url = await API.getMovieTrailer(this.movie[this.i].id)
+            this.urlMovie = url
+            this.i++
+        }
+        this.trailer = `https://www.youtube.com/watch?v=${this.urlMovie}`
     }
 }
-
 </script>
