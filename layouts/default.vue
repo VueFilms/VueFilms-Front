@@ -131,15 +131,8 @@ export default {
   },
   computed: {
     show() {
-      if (this.$vuetify.breakpoint.name === 'xs') {
+      if (this.$vuetify.breakpoint.name === 'xs' || this.$vuetify.breakpoint.name === 'sm') {
         return true
-      } else {
-        return false
-      }
-    },
-    showAside() {
-      if (this.$vuetify.breakpoint.name === 'xs') {
-        return this.drawer
       } else {
         return false
       }
