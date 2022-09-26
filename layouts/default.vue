@@ -10,7 +10,6 @@
             <v-list-item-title v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
-        <v-spacer></v-spacer>
         <v-list-item v-if="local.id" @click="logout">
           <v-list-item-action>
             <v-icon>mdi-logout</v-icon>
