@@ -17,11 +17,10 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     link: [{ rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     link: [{ rel: 'preconnect', href: 'https://fonts.gstatic.com' }],
     link: [{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap' }],
-
+    link: [{ rel: 'icon', type: 'image/png', href: 'favicon.png' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -41,7 +40,8 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
-    "@nuxtjs/svg"
+    "@nuxtjs/svg",
+    '@nuxtjs/pwa'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -61,7 +61,7 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en',
+      lang: 'es',
     },
   },
 
