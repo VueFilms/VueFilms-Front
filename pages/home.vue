@@ -69,7 +69,7 @@ export default {
   background:
     linear-gradient(rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 0.7)),
-    url('https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/2RSirqZG949GuRwN38MYCIGG4Od.jpg') no-repeat center center fixed !important;
+    url('https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/2RSirqZG949GuRwN38MYCIGG4Od.jpg') no-repeat center center !important;
   background-size: cover;
 }
 </style>
