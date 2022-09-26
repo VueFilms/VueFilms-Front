@@ -44,7 +44,7 @@
       </v-container>
     </v-app-bar>
 
-    <v-main class="ma-0 pa-0">
+    <v-main>
       <v-container fluid>
         <Nuxt />
       </v-container>
