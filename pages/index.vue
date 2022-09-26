@@ -125,7 +125,7 @@ export default {
         },
         async login() {
             const logged = await API.login(this.email, this.password)
-            if (logged) {
+            if (logged && this.email !== '' && this.password !== '') {
                 this.$router.push('/home')
             } else if (!this.loginExist) {
                 this.loginExist = !this.loginExist
