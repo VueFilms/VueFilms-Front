@@ -86,9 +86,9 @@ export default {
     name: 'IndexPage',
     data() {
         return {
-            email: "yeray@yeray.com",
-            password: "123456789",
-            passwordConfirm: '123456789',
+            email: "",
+            password: "",
+            passwordConfirm: '',
             pwdVisible: false,
             loginCard: false,
             loginExist: false,
